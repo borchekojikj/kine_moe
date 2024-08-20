@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    use HasFactory;
+
+    public $fillable  = ['comment', 'user_id', 'content_id', 'discussion_id', 'created_at', 'updated_at'];
+
+    // public $timestamps = false;
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function discussion()
+    {
+        return $this->belongsTo(Discussion::class);
+    }
+}
